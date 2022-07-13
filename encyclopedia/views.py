@@ -23,7 +23,8 @@ def view_entry(request, entry):
             "title": entry
             })
     else:
-        raise Http404()
+        return render(request, "encyclopedia/no_entry.html")
+        #raise Http404()
 
 def search_results(request):
     term = request.GET.get('term')
