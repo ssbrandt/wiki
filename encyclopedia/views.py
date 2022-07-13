@@ -60,7 +60,8 @@ def new_entry(request):
 
             if util.get_entry(title) == None:
                 util.save_entry(title, body)
-                return HttpResponseRedirect(reverse("index"))
+                return redirect('entry', title)
+                
             else:
                 messages.error(request,'Error: Entry already exist. Please choose a new title or edit the existing entry.')
                 return render(request, 'encyclopedia/new.html', context={'form': form})
