@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create New Entry:
+{% endblock %}
+
+{% block body %}
+
+    <h1>Create a New Entry</h1>
+
+    {% if messages %}
+      {% for message in messages %}
+          <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
+      {% endfor %}
+    {% endif %}
+
+    <form class="new" action="{% url 'new' %}" method="post">
+      {% csrf_token %}
+      {{form}}
+      <input type="submit" name="Submit">
+
+    </form>
+
+{% endblock %}
